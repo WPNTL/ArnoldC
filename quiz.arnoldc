@@ -1,0 +1,93 @@
+IT'S SHOWTIME
+HEY CHRISTMAS TREE score
+YOU SET US UP 0
+
+TALK TO THE HAND "Welcome to the Arnold Schwarzenegger Quiz!"
+TALK TO THE HAND "Let's get started."
+
+GET TO THE CHOPPER answer
+HERE IS MY INVITATION 0
+GET TO THE CHOPPER questionIndex
+HERE IS MY INVITATION 1
+
+LABEL startLoop
+TALK TO THE HAND "Question " questionIndex ":"
+
+CHILL
+
+SWITCH questionIndex
+  CASE 1
+    TALK TO THE HAND "In which movie did Arnold play a character named 'John Matrix'?"
+    TALK TO THE HAND "1. Predator"
+    TALK TO THE HAND "2. Commando"
+    TALK TO THE HAND "3. Total Recall"
+    GET TO THE CHOPPER answer
+    HERE IS MY INVITATION 0
+    BREAK
+
+  CASE 2
+    TALK TO THE HAND "What is the name of the artificial intelligence system in 'Terminator'?"
+    TALK TO THE HAND "1. Skynet"
+    TALK TO THE HAND "2. Cyberdyne"
+    TALK TO THE HAND "3. HAL 9000"
+    GET TO THE CHOPPER answer
+    HERE IS MY INVITATION 0
+    BREAK
+
+  // Add more questions for other cases
+  // Aqui pode adicionar mais perguntas
+
+
+  OTHERWISE
+    TALK TO THE HAND "You've completed the quiz!"
+    TALK TO THE HAND "Your score: " score " out of 10"
+    YOU HAVE BEEN TERMINATED
+    BREAK
+ENDSWITCH
+
+STICK AROUND answer
+GET TO THE CHOPPER answer
+HERE IS MY INVITATION answer
+GET UP 1
+ENOUGH TALK
+
+TALK TO THE HAND "You chose option " answer "."
+
+CHILL
+
+SWITCH questionIndex
+  CASE 1
+    HEY CHRISTMAS TREE correctAnswer
+    YOU SET US UP 2
+    BREAK
+
+  CASE 2
+    HEY CHRISTMAS TREE correctAnswer
+    YOU SET US UP 1
+    BREAK
+
+  // Add more correct answers for other cases
+  // Adicione mais respostas corretas 
+ENDSWITCH
+
+EQUALS answer correctAnswer
+I LIED
+STICK AROUND answer
+TALK TO THE HAND "Incorrect!"
+JUMP endQuestion
+
+LABEL correctAnswer
+TALK TO THE HAND "Correct!"
+HEY CHRISTMAS TREE score
+GET UP score
+GET UP 1
+
+LABEL endQuestion
+GET TO THE CHOPPER questionIndex
+HERE IS MY INVITATION questionIndex
+GET UP 1
+ENOUGH TALK
+
+LESS_THAN questionIndex 11
+I LIED
+JUMP startLoop
